@@ -115,7 +115,7 @@ void loop() {
     // tone(PIN_BUZZER, FREQUENCY, 100);
     playSound(false);
     openDoor();
-//    delay(1000);
+    delay(5000);
     Serial.println("Cerrando Puerta...");
     playSound(true);
     closeDoor();
