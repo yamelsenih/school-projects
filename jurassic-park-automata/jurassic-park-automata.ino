@@ -113,20 +113,29 @@ void loop() {
   if(isOpenDoor) {
     Serial.println("Abriendo Puerta...");
     // tone(PIN_BUZZER, FREQUENCY, 100);
-    playSound();
+    playSound(false);
     openDoor();
-    delay(5000);
+//    delay(1000);
     Serial.println("Cerrando Puerta...");
-    playSound();
+    playSound(true);
     closeDoor();
     // delay(1000);
   }
 }
 
-void playSound() {
-  tone(PIN_BUZZER, FREQUENCY, 500);
-  delay(1000);
-  tone(PIN_BUZZER, FREQUENCY * 2, 500);
-  delay(1000);
-  tone(PIN_BUZZER, FREQUENCY * 3, 500);
+void playSound(bool reverseDoor) {
+  if(!reverseDoor) {
+    tone(PIN_BUZZER, FREQUENCY, 500);
+    delay(500);
+    tone(PIN_BUZZER, FREQUENCY * 3, 500);
+    delay(500);
+    tone(PIN_BUZZER, FREQUENCY * 4, 500); 
+  } else {
+    tone(PIN_BUZZER, FREQUENCY * 4, 500);
+    delay(500);
+    tone(PIN_BUZZER, FREQUENCY * 3, 500);
+    delay(500);
+    tone(PIN_BUZZER, FREQUENCY, 500);
+  }
+
 }
